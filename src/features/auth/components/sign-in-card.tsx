@@ -1,15 +1,22 @@
+import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
+import { useAuthActions } from "@convex-dev/auth/react";
 
 export default function SignInCard({ setState }: { setState: (state: SignInFlow) => void }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { signIn } = useAuthActions();
+  const [pending, setPending] = useState(false);
+
+  const onProviderSignIn = (value: "github" | "google") => {
+    setPending(true);
+    signIn(value).finally(() => setPending(false));
+  };
   return (
     <Card className="w-full h-full p-8">
       <CardHeader className="px-0 pt-0">
@@ -17,9 +24,9 @@ export default function SignInCard({ setState }: { setState: (state: SignInFlow)
         <CardDescription>Use your email or another service to continue</CardDescription>
       </CardHeader>
       <CardContent className="px-0 pb-0 space-y-5">
-        <form className="space-y-2.5 ">
+        <form className="space-y-2.5">
           <Input
-            disabled={false}
+            disabled={pending}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
@@ -27,22 +34,22 @@ export default function SignInCard({ setState }: { setState: (state: SignInFlow)
             required
           />
           <Input
-            disabled={false}
+            disabled={pending}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             type="password"
             required
           />
-          <Button type="submit" className="w-full" size={"lg"} disabled={false}>
+          <Button type="submit" className="w-full" size={"lg"} disabled={pending}>
             Continue
           </Button>
         </form>
         <Separator />
         <div className="flex flex-col gap-y-2.5">
           <Button
-            disabled={false}
-            onClick={() => {}}
+            disabled={pending}
+            onClick={() => onProviderSignIn("google")}
             variant={"outline"}
             size={"lg"}
             className="relative w-full"
@@ -51,8 +58,8 @@ export default function SignInCard({ setState }: { setState: (state: SignInFlow)
             Continue with Google
           </Button>
           <Button
-            disabled={false}
-            onClick={() => {}}
+            disabled={pending}
+            onClick={() => onProviderSignIn("github")}
             variant={"outline"}
             size={"lg"}
             className="relative w-full"
