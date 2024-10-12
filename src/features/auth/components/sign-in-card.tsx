@@ -6,16 +6,37 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useAuthActions } from "@convex-dev/auth/react";
+import { TriangleAlert } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function SignInCard({ setState }: { setState: (state: SignInFlow) => void }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { signIn } = useAuthActions();
   const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+
+  const onPasswordSignIn = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+    setPending(true);
+    signIn("password", { email, password, flow: "signIn" })
+      .then(router.refresh)
+      .catch(() => {
+        setError("Invalid email or password");
+      })
+      .finally(() => setPending(false));
+  };
 
   const onProviderSignIn = (value: "github" | "google") => {
     setPending(true);
-    signIn(value).finally(() => setPending(false));
+    setError(null);
+    signIn(value)
+      .catch(() => {
+        setError("Invalid email or password");
+      })
+      .finally(() => setPending(false));
   };
   return (
     <Card className="w-full h-full p-8">
@@ -23,8 +44,14 @@ export default function SignInCard({ setState }: { setState: (state: SignInFlow)
         <CardTitle>Login to continue</CardTitle>
         <CardDescription>Use your email or another service to continue</CardDescription>
       </CardHeader>
+      {!!error && (
+        <div className="flex items-center p-3 mb-6 text-sm rounded-md bg-destructive/15 gap-x-2 text-destructive">
+          <TriangleAlert className="size-4" />
+          <p>{error}</p>
+        </div>
+      )}
       <CardContent className="px-0 pb-0 space-y-5">
-        <form className="space-y-2.5">
+        <form onSubmit={onPasswordSignIn} className="space-y-2.5">
           <Input
             disabled={pending}
             value={email}
