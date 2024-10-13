@@ -1,7 +1,23 @@
 declare type SignInFlow = "signIn" | "signUp";
 
 declare interface WorkspaceIdPageProps {
-    params: {
-      workspaceId: string;
-    };
-  }
+  params: {
+    workspaceId: string;
+  };
+}
+
+declare interface UseCurrentMemberProps {
+  workspaceId: Id<"workspaces">;
+}
+
+declare interface WorkspaceHeaderProps {
+  workspace: Doc<"workspaces">;
+  isAdmin: boolean;
+}
+
+declare interface HintProps {
+  label: string;
+  children: ReactNode;
+  side?: "top" | "bottom" | "left" | "right";
+  align?: "start" | "center" | "end";
+}
