@@ -21,3 +21,8 @@ declare interface HintProps {
   side?: "top" | "bottom" | "left" | "right";
   align?: "start" | "center" | "end";
 }
+
+declare interface UpdateWorkspaceRequestType {
+  id: Id<"workspaces">;
+  name: string;
+};

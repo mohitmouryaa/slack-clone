@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
-
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import { ConvexClientProvider } from "@/components/convex-client-provider";
-
 import "./globals.css";
-import CreateWorkspaceModal from "@/features/workspaces/components/createWorkspaceModal";
 import Modals from "@/components/modals";
 import { Toaster } from "sonner";
+import JotaiProvider from "@/components/jotai-provider";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -26,9 +24,11 @@ export default function RootLayout({
       <html lang="en">
         <body className={nunito.className}>
           <ConvexClientProvider>
-            <Toaster />
-            <Modals />
-            {children}
+            <JotaiProvider>
+              <Toaster />
+              <Modals />
+              {children}
+            </JotaiProvider>
           </ConvexClientProvider>
         </body>
       </html>
