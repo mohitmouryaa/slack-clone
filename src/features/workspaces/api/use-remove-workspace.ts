@@ -25,7 +25,7 @@ export default function useRemoveWorkspace() {
   const mutation = useMutation(api.workspaces.remove);
 
   const mutate = useCallback(
-async (values: RequestType, options?: Options) => {
+    async (values: RequestType, options?: Options) => {
       try {
         setData(null);
         setError(null);

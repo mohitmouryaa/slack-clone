@@ -16,14 +16,17 @@ export default function WorkspaceSwitcher() {
   const router = useRouter();
   const workspaceId = useWorkspaceId();
   const [_open, setOpen] = useCreateWorkspaceModal();
-  const { workspaces, isLoading: workspacesLoading } = useGetWorkspaces();
+  const { workspaces } = useGetWorkspaces();
   const { workspace, isLoading: workspaceLoading } = useGetWorkspace({ id: workspaceId });
 
   const filteredWorkspaces = workspaces?.filter((workspace) => workspace?._id !== workspaceId);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size={"iconSm"} className="size-9 overflow-hidden bg-[#ABABAD] hover:bg-[#ABABAD]/80 text-slate-800 font-semibold text-xl">
+        <Button
+          size={"iconSm"}
+          className="size-9 overflow-hidden bg-[#ABABAD] hover:bg-[#ABABAD]/80 text-slate-800 font-semibold text-xl"
+        >
           {workspaceLoading ? (
             <Loader className="size-5 animate-spin hover:shrink-0" />
           ) : (

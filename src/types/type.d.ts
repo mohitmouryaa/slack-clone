@@ -25,4 +25,4 @@ declare interface HintProps {
 declare interface UpdateWorkspaceRequestType {
   id: Id<"workspaces">;
   name: string;
-};
+}

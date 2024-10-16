@@ -6,8 +6,8 @@ import { Id } from "../../../../convex/_generated/dataModel";
 declare type ResponseType = Id<"workspaces"> | null;
 
 type Options = {
-  onSuccess?: (data: ResponseType) => void;
-  onError?: (error: Error) => void;
+  onSuccess?: (_data: ResponseType) => void;
+  onError?: (_error: Error) => void;
   onSettled?: () => void;
   throwError?: boolean;
 };

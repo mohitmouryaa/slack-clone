@@ -9,7 +9,7 @@ import { useState } from "react";
 import { TriangleAlert } from "lucide-react";
 import { useAuthActions } from "@convex-dev/auth/react";
 
-export default function SignUpCard({ setState }: { setState: (state: SignInFlow) => void }) {
+export default function SignUpCard({ setState }: { setState: (_state: SignInFlow) => void }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
