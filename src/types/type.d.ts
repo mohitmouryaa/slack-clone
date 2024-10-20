@@ -10,6 +10,10 @@ declare interface UseCurrentMemberProps {
   workspaceId: Id<"workspaces">;
 }
 
+declare interface UseGetMemberProps {
+  workspaceId: Id<"workspaces">;
+}
+
 declare interface WorkspaceHeaderProps {
   workspace: Doc<"workspaces">;
   isAdmin: boolean;

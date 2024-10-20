@@ -17,26 +17,30 @@ export default function SignInCard({ setState }: { setState: (_state: SignInFlow
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
-  const onPasswordSignIn = (e: React.FormEvent<HTMLFormElement>) => {
+  const onPasswordSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
     setPending(true);
-    signIn("password", { email, password, flow: "signIn" })
-      .then(router.refresh)
-      .catch(() => {
-        setError("Invalid email or password");
-      })
-      .finally(() => setPending(false));
+    try {
+      await signIn("password", { email, password, flow: "signIn" });
+      router.refresh();
+    } catch {
+      setError("Invalid email or password");
+    } finally {
+      setPending(false);
+    }
   };
 
-  const onProviderSignIn = (value: "github" | "google") => {
+  const onProviderSignIn = async (value: "github" | "google") => {
     setPending(true);
     setError(null);
-    signIn(value)
-      .catch(() => {
-        setError("Invalid email or password");
-      })
-      .finally(() => setPending(false));
+    try {
+      await signIn(value);
+    } catch {
+      setError("Invalid email or password");
+    } finally {
+      setPending(false);
+    }
   };
   return (
     <Card className="w-full h-full p-8">
