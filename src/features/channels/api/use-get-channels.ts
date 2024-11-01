@@ -13,3 +13,4 @@ export default function useGetChannels({ workspaceId }: UseGetChannelsProps) {
 
   return { channels, isLoading };
 }
+

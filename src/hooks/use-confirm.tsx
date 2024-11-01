@@ -45,9 +45,7 @@ export default function useConfirm(
           <Button onClick={handleCancel} variant={"outline"}>
             Cancel
           </Button>
-          <Button onClick={handleConfirm}>
-            Confirm
-          </Button>
+          <Button onClick={handleConfirm}>Confirm</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
