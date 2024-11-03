@@ -42,14 +42,14 @@ export default function WorkspaceIdPage() {
     router,
   ]);
 
-  if (workspaceLoading || channelsLoading)
+  if (workspaceLoading || channelsLoading || memberLoading)
     return (
       <div className="flex flex-col items-center justify-center flex-1 h-full gap-2">
         <Loader className="size-6 animate-spin text-muted-foreground" />
       </div>
     );
 
-  if (!workspace) {
+  if (!workspace || !currentMember) {
     return (
       <div className="flex flex-col items-center justify-center flex-1 h-full gap-2">
         <TriangleAlert className="size-6 text-muted-foreground" />
