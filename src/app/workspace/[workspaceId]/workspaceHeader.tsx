@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown, ListFilter, SquarePen } from "lucide-react";
-import PreferencesModal from "./preferencesModal";
+import PreferencesModal from "./preferences-modal";
 import { useState } from "react";
 import InviteModal from "./inviteModal";
 

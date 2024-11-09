@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import useCreateChannel from "@/features/channels/api/use-create-channel";
 import useCreateChannelModal from "@/features/channels/store/use-create-channel-modal";
-import useWorkspaceId from "@/hooks/useWorkspaceId";
+import useWorkspaceId from "@/hooks/use-workspace-id";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 

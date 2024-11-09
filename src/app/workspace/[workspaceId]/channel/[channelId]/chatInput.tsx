@@ -1,6 +1,6 @@
 import useCreateMessage from "@/features/messages/api/use-create-message";
 import useChannelId from "@/hooks/use-channel-id";
-import useWorkspaceId from "@/hooks/useWorkspaceId";
+import useWorkspaceId from "@/hooks/use-workspace-id";
 import dynamic from "next/dynamic";
 import type Quill from "quill";
 import { useRef, useState } from "react";

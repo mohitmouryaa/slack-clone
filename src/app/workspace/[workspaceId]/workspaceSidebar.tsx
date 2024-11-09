@@ -1,6 +1,6 @@
 import useCurrentMember from "@/features/members/api/use-current-member";
 import useGetWorkspace from "@/features/workspaces/api/use-get-workspace";
-import useWorkspaceId from "@/hooks/useWorkspaceId";
+import useWorkspaceId from "@/hooks/use-workspace-id";
 import useGetMembers from "@/features/members/api/use-get-members";
 import { AlertTriangle, HashIcon, Loader, MessageSquareText, SendHorizontal } from "lucide-react";
 import WorkspaceHeader from "./workspaceHeader";

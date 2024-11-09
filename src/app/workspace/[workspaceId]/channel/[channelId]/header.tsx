@@ -14,7 +14,7 @@ import useUpdateChannel from "@/features/channels/api/use-update-channel";
 import useCurrentMember from "@/features/members/api/use-current-member";
 import useChannelId from "@/hooks/use-channel-id";
 import useConfirm from "@/hooks/use-confirm";
-import useWorkspaceId from "@/hooks/useWorkspaceId";
+import useWorkspaceId from "@/hooks/use-workspace-id";
 import { TrashIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

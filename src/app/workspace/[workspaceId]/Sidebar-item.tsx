@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import useWorkspaceId from "@/hooks/useWorkspaceId";
+import useWorkspaceId from "@/hooks/use-workspace-id";
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import type { IconType } from "react-icons/lib";

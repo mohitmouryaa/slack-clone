@@ -2,7 +2,7 @@
 
 import useGetWorkspaceInfo from "@/features/workspaces/api/use-get-workspace-info";
 import useJoinWorkspace from "@/features/workspaces/api/use-join-workspace";
-import useWorkspaceId from "@/hooks/useWorkspaceId";
+import useWorkspaceId from "@/hooks/use-workspace-id";
 import { Button } from "@/components/ui/button";
 import { HashIcon, Loader } from "lucide-react";
 import Link from "next/link";
