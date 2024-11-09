@@ -7,14 +7,14 @@ import data from "@emoji-mart/data";
 interface EmojiPopoverProps {
   children: React.ReactNode;
   hint?: string;
-  onEmojiSelect: (emoji: any) => void;
+  onEmojiSelect: (emoji: { native: string }) => void;
 }
 
 export default function EmojiPopover({ children, hint = "Emoji", onEmojiSelect }: EmojiPopoverProps) {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
-  const onSelect = (emoji: any) => {
+  const onSelect = (emoji: { native: string }) => {
     onEmojiSelect(emoji);
     setPopoverOpen(false);
 
