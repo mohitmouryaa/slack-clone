@@ -31,7 +31,7 @@ declare interface UpdateWorkspaceRequestType {
   name: string;
 }
 
-type MessageProps = {
+declare type MessageProps = {
   id: Id<"messages">;
   memberId: Id<"members">;
   authorImage?: string;
@@ -49,9 +49,14 @@ type MessageProps = {
   updatedAt: Doc<"messages">["updateTime"];
   isEditing: boolean;
   isCompact?: boolean;
-  setEditing: (id: Id<"messages"> | null) => void;
+  setEditingId: (id: Id<"messages"> | null) => void;
   hideThreadButton?: boolean;
   threadCount?: number;
   threadImage?: string;
   threadTimestamp?: number;
 };
+
+declare interface ChannelHeroProps {
+  name: string;
+  creationTime: number;
+}
